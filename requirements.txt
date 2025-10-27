@@ -1,0 +1,8 @@
+ipykernel
+pandas
+plotly
+
+
+#need for plotly
+nbformat
+statmodels
