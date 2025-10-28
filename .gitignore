@@ -9,3 +9,5 @@ lab*.ipynb
 # virtual environments
 .venv/
 myenv/
+*.ipynb
+!lecture_16_example.ipynb
