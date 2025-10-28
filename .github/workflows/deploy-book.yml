@@ -26,11 +26,13 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Install deps
+      # 先装你项目的依赖，再**强制**装 jupyter-book（单独固定大版本）
+      - name: Install deps (project + jupyter-book)
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
-          pip show jupyter-book
+          if [ -f requirements.txt ]; then pip install -r requirements.txt || true; fi
+          pip install "jupyter-book==1.*"
+          python -m jupyter_book --version
 
       - name: Build JupyterBook
         run: |
@@ -51,4 +53,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-        
