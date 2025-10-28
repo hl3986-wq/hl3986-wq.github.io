@@ -1,8 +1,8 @@
-name: deploy-book
+name: Deploy JupyterBook
 
 on:
   push:
-    branches: [ main ]
+    branches: ["main"]
   workflow_dispatch:
 
 permissions:
@@ -21,22 +21,18 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up Python
+      - name: Setup Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.x'
+          python-version: "3.x"
 
-      - name: Install dependencies
+      - name: Install deps
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
-          pip install "jupyter-book>=1.0.0"
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; else pip install "jupyter-book==1.*"; fi
 
       - name: Build JupyterBook
         run: jupyter-book build --all .
-
-      - name: Configure Pages
-        uses: actions/configure-pages@v5
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
