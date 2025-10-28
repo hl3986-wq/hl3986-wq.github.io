@@ -26,17 +26,18 @@ jobs:
         with:
           python-version: "3.11"
 
-      # 先装你项目的依赖，再**强制**装 jupyter-book（单独固定大版本）
       - name: Install deps (project + jupyter-book)
         run: |
           python -m pip install --upgrade pip
+          # 你的项目依赖（如果没有就跳过，不会报错）
           if [ -f requirements.txt ]; then pip install -r requirements.txt || true; fi
+          # 关键：安装 jupyter-book（用可执行命令调用）
           pip install "jupyter-book==1.*"
-          python -m jupyter_book --version
+          jupyter-book --version
 
       - name: Build JupyterBook
         run: |
-          python -m jupyter_book build --all .
+          jupyter-book build --all .
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
@@ -53,3 +54,4 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
