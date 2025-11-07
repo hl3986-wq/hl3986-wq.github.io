@@ -3,9 +3,6 @@ root: index
 
 chapters:
   - file: lecture_16_example
+  - file: projects/project1/index
 
-parts:
-  - caption: Projects
-    chapters:
-      - file: projects/project1/index
 
