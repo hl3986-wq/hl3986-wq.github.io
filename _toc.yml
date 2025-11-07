@@ -4,7 +4,8 @@ root: index
 chapters:
   - file: lecture_16_example
 
-  - header: Projects
+parts:
+  - caption: Projects
     chapters:
       - file: projects/project1/index
 
