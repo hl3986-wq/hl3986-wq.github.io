@@ -11,3 +11,4 @@ lab*.ipynb
 myenv/
 *.ipynb
 !lecture_16_example.ipynb
+!project_2.ipynb
