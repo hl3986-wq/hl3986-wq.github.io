@@ -3,7 +3,7 @@ root: index
 
 chapters:
   - file: lecture_16_example
-  - file: projects/project1/index
   - file: project_2
-    title: Project 2
+  - file: project_3
+
 
